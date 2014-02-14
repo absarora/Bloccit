@@ -1,15 +1,5 @@
 Bloccit::Application.routes.draw do
 
-  get "posts/index"
-
-  get "comments/index"
-
-  get "comments/new"
-
-  get "comments/show"
-
-  get "comments/edit"
-
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations' }
 
   resources :users, only: [:show, :index]
@@ -23,8 +13,6 @@ Bloccit::Application.routes.draw do
       resources :favorites, only: [:create, :destroy]
     end
   end
-
-  resources :posts
 
   match "about" => 'welcome#about', via: :get
 
